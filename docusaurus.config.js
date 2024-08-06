@@ -1,6 +1,5 @@
 const path = require('path');
 const prismic = require('@prismicio/client');
-const fetch = require('node-fetch');
 
 const VERSIONS_JSON = require('./versions.json');
 
@@ -349,6 +348,7 @@ module.exports = {
       return {
         name: 'ionic-docs-ads',
         async loadContent() {
+        const { fetch } = await import("./utils/fetch.mjs")
           const repoName = 'ionicframeworkcom';
           const endpoint = prismic.getEndpoint(repoName);
           const client = prismic.createClient(endpoint, {

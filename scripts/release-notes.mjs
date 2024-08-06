@@ -1,5 +1,5 @@
 import pkg from 'fs-extra';
-import fetch from 'node-fetch';
+import { fetch } from '../utils/fetch.mjs';
 import { resolve } from 'path';
 import { compare } from 'semver';
 import { URL } from 'url';

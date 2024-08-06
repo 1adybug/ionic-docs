@@ -1,8 +1,9 @@
-const fetch = require('node-fetch');
-const fs = require('fs');
-const path = require('path');
-const { api: apiOverrides } = require('./data/meta-override.json');
-const utils = require('./utils');
+import { fetch } from '../utils/fetch.mjs';
+import fs from 'fs';
+import path from 'path';
+import json from './data/meta-override.json' assert { type: 'json' };
+const { api: apiOverrides } = json;
+import * as utils from './utils.mjs';
 
 const DEMOS_PATH = path.resolve('static/demos');
 let COMPONENT_LINK_REGEXP;
@@ -63,7 +64,7 @@ ${utils.getHeadTag(apiOverrides[tag])}
 `;
 }
 
-function renderReadme({ readme, encapsulation }) {
+function renderReadme({ readme = '', encapsulation }) {
   const endIndex = readme.indexOf('\n');
 
   const title = readme.substring(0, endIndex);
